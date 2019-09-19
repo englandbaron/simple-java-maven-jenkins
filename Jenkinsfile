@@ -10,15 +10,19 @@ pipeline {
     stages {
         stage('Init') {
             steps{
-                wrap([$class: 'BuildUser']) {
-                    def userid = ${env.BUILD_USER}
-                    currentBuild.displayName = "${WorkItemID}"  + "_" + "${BUILD_NUMBER}" + " by " + "${userid}"
+                script{
+                    wrap([$class: 'BuildUser']) {
+                        def userid = ${env.BUILD_USER}
+                        currentBuild.displayName = "${WorkItemID}"  + "_" + "${BUILD_NUMBER}" + " by " + "${userid}"
+                    }
                 }
             }
         }
         stage('Print Parameters'){
             steps {
-                sh 'echo `pwd`'
+                script{
+                    sh 'echo `pwd`'
+                }
             }
         }
         stage('Build') {
