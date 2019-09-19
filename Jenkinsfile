@@ -13,7 +13,7 @@ pipeline {
             steps{
                 script{
                     wrap([$class: 'BuildUser']) {
-                        def userid = ${env.BUILD_USER}
+                        def userid = env.BUILD_USER
                         currentBuild.displayName = "${WorkItemID}"  + "_" + "${BUILD_NUMBER}" + " by " + "${userid}"
                     }
                 }
