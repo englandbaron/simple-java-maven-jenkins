@@ -11,8 +11,8 @@ pipeline {
         stage('Init') {
             steps{
                 wrap([$class: 'BuildUser']) {
-                    def userid = env.BUILD_USER
-                    currentBuild.displayName = "$WorkItemID"  + "_" + "$BUILD_NUMBER" + " by " + "${userid}"
+                    def userid = ${env.BUILD_USER}
+                    currentBuild.displayName = "${WorkItemID}"  + "_" + "${BUILD_NUMBER}" + " by " + "${userid}"
                 }
             }
         }
