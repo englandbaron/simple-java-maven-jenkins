@@ -17,7 +17,9 @@ pipeline {
             }
         }
         stage('Print Parameters'){
-            sh 'echo `pwd`'
+            steps {
+                sh 'echo `pwd`'
+            }
         }
         stage('Build') {
             steps {
